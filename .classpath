@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/java"/>
+	<classpathentry kind="var" path="JRE_LIB" sourcepath="JRE_SRC"/>
+	<classpathentry kind="con" path="classes"/>
+	<classpathentry kind="con" path="lib/jakarta-regexp-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/smpp.jar"/>
+	<classpathentry kind="lib" path="lib/junit.jar"/>
+	<classpathentry kind="output" path="classes"/>
+</classpath>
