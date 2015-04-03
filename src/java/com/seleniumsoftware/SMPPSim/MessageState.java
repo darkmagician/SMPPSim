@@ -124,15 +124,16 @@ public class MessageState {
 	public int hashCode() {
 		// An int derived from message_id plus the last 3 digits of source_addr
 		// should surely always be unique. Shouldn't it?
-		int sal = source_addr.length();
+/*		int sal = source_addr.length();
 		String key = message_id + source_addr.substring(sal - 3, sal);
 		byte[] bytearray = key.getBytes();
 		int l = bytearray.length;
 		int h = 0;
 		for (int i = 0; i < l; i++) {
 			h = h + bytearray[i] * 31 ^ (l - (i + 1));
-		}
-		return h;
+		}*/
+		// use simple hash
+		return message_id.hashCode();
 	}
 
 	/**

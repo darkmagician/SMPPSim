@@ -167,6 +167,8 @@ public class SMPPSim {
 	private static String protocolHandlerClassName;
 
 	private static String lifeCycleManagerClassName;
+	
+	private static int lifecycleServiceThread;
 
 	// USSD
 	private static boolean deliver_sm_includes_ussd_service_op = false;
@@ -324,6 +326,8 @@ public class SMPPSim {
 		delayed_iqueue_period = 1000 * getIntProperty(props, "DELAYED_INBOUND_QUEUE_PROCESSING_PERIOD", 60);
 		delayed_inbound_queue_max_attempts = getIntProperty(props, "DELAYED_INBOUND_QUEUE_MAX_ATTEMPTS", 10);
 
+		lifecycleServiceThread=getIntProperty(props, "LIFECYCLE_THREAD_NUM", 1);
+				
 		setCaptureSmeBinary(Boolean.valueOf(props.getProperty("CAPTURE_SME_BINARY")).booleanValue());
 		setCaptureSmeBinaryToFile(props.getProperty("CAPTURE_SME_BINARY_TO_FILE"));
 		setCaptureSmppsimBinary(Boolean.valueOf(props.getProperty("CAPTURE_SMPPSIM_BINARY")).booleanValue());
@@ -1175,5 +1179,12 @@ public class SMPPSim {
 
 	public static void setSimulate_variable_submit_sm_response_times(boolean simulateVariableSubmitSmResponseTimes) {
 		simulate_variable_submit_sm_response_times = simulateVariableSubmitSmResponseTimes;
+	}
+
+	/**
+	 * @return the lifecycleServiceThread
+	 */
+	public static int getLifecycleServiceThread() {
+		return lifecycleServiceThread;
 	}
 }

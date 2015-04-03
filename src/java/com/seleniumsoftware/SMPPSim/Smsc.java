@@ -294,8 +294,11 @@ public class Smsc {
 		inboundQueueService.start();
 
 		// LifeCycleService (OutboundQueue) must always be running
-		lifecycleService = new Thread(oq);
-		lifecycleService.start();
+		int lifeThreadNum =SMPPSim.getLifecycleServiceThread();
+		for(int i=0;i<lifeThreadNum;i++){
+			lifecycleService = new Thread(oq,"LifeCycle-"+i);
+			lifecycleService.start();
+		}
 		
 		if (SMPPSim.getDelayReceiptsBy() > 0) {
 			logger.info("Starting delivery receipts delay service....");
